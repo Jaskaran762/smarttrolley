@@ -62,11 +62,11 @@ unsigned char code press_but[] = "Press ADD/REMOVE";
 
 void update_lcd(unsigned char dis)
 {
- lcd(item[dis] , LINE1);
- lcd( "                ", LINE2);
-
- lcd("    Rs: ", LINE2);
- lcd_putUINT16(cost[dis]);
+ lcd.setCursor(0, 1);
+ lcd.print(item[dis]);
+ lcd.setCursor(1, 1);
+ lcd.print("    Rs: ");
+ lcd.print(cost[dis]);
 // balance = balance + cost[dis];
 // lcdcmd(0xC8);
 // lcd_putUINT16(balance);
@@ -77,7 +77,7 @@ unsigned char item_true[12] = 0;
 
 void take_action(unsigned char dat)
 {
- if(dat>=1 && dat<=10)  // rfid 
+ if(dat>=1 && dat<=7)  // rfid 
  {
 
   if(item_true[dat]==0)
